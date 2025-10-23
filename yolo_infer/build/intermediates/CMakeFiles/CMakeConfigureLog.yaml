@@ -1,0 +1,529 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      The system is: Linux - 6.8.0-83-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/3.27.7/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/3.27.7/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn"
+      binary: "/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c8b04/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c8b04.dir/build.make CMakeFiles/cmTC_c8b04.dir/build
+        gmake[1]: Entering directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn'
+        Building C object CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.27/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.2' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.2) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/'
+         /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/local/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c8b04.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cch9Ymaa.s
+        GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.2) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/11/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.2) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 4011c2103cba78949d7e02d0f0047a3d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/'
+         as -v --64 -o CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o /tmp/cch9Ymaa.s
+        GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_c8b04
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8b04.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -o cmTC_c8b04 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.2' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.2) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8b04' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c8b04.'
+         /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccz1TSky.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c8b04 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8b04' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c8b04.'
+        gmake[1]: Leaving directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c8b04/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c8b04.dir/build.make CMakeFiles/cmTC_c8b04.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-DCIeAn']
+        ignore line: [Building C object CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -c /usr/local/share/cmake-3.27/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.2' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.2) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/local/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c8b04.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cch9Ymaa.s]
+        ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.2) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04.2) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 4011c2103cba78949d7e02d0f0047a3d]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o /tmp/cch9Ymaa.s]
+        ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_c8b04]
+        ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8b04.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -o cmTC_c8b04 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04.2' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-2Y5pKs/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.2) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8b04' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c8b04.']
+        link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccz1TSky.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c8b04 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccz1TSky.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_c8b04] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
+          arg [CMakeFiles/cmTC_c8b04.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL"
+      binary: "/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_745a2/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_745a2.dir/build.make CMakeFiles/cmTC_745a2.dir/build
+        gmake[1]: Entering directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL'
+        Building CXX object CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o
+        /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc   -v -o CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp
+        Reading specs from /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/specs
+        COLLECT_GCC=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc
+        Target: arm-linux-musleabi
+        Configured with: /devcloud/workspace/source/build/../build_tmp/build_source/gcc/configure LDFLAGS='-z relro -z now -z noexecstack -pie ' CFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' CXXFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' 'CFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' 'CXXFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' --enable-cxx-flags= --target=arm-linux-musleabi --prefix=/devcloud/workspace/source/build/../output/arm-linux-musleabi --with-gmp=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-isl=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpfr=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpc=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-build-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --disable-libssp --enable-__cxa_atexit --enable-symvers=gnu --disable-libitm --enable-lto --enable-shared --disable-libstdcxx-pch --disable-libquadmath --disable-bootstrap --with-pkgversion='musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39' --with-system-zlib --with-build-time-tools=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target/bin --disable-fixed-point --enable-checking=release --with-multilib-list=@t-ml-arm-linux-musleabi --disable-libgomp --enable-libatomic --enable-libsanitizer --enable-tls --disable-nls --disable-libstdcxx-dual-abi --disable-extern-template --with-arch=armv7-a --with-float=softfp --with-mode=thumb
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.3.0 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a'
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/cc1plus -quiet -v -iprefix /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/ -isysroot /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target -D_GNU_SOURCE /usr/local/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mfloat-abi=softfp -mthumb -mtls-dialect=gnu -march=armv7-a -auxbase-strip CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccQK0VMr.s
+        GNU C++14 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) version 10.3.0 (arm-linux-musleabi)
+        	compiled by GNU C version 7.3.0, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version UNKNOWN-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0"
+        ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi"
+        ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward"
+        ignoring nonexistent directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/local/include"
+        ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include"
+        ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/include
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/include
+        End of search list.
+        GNU C++14 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) version 10.3.0 (arm-linux-musleabi)
+        	compiled by GNU C version 7.3.0, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version UNKNOWN-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: c01f74acfb900c6c9ba5ab119da9d77b
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a'
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/as -v -march=armv7-a -mfloat-abi=softfp -meabi=5 -o CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccQK0VMr.s
+        GNU assembler version 2.38 (arm-linux-musleabi) using BFD version (GNU Binutils) 2.38
+        COMPILER_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/
+        LIBRARY_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a'
+        Linking CXX executable cmTC_745a2
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_745a2.dir/link.txt --verbose=1
+        /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc  -v CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_745a2 
+        Reading specs from /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/specs
+        COLLECT_GCC=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc
+        COLLECT_LTO_WRAPPER=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/lto-wrapper
+        Target: arm-linux-musleabi
+        Configured with: /devcloud/workspace/source/build/../build_tmp/build_source/gcc/configure LDFLAGS='-z relro -z now -z noexecstack -pie ' CFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' CXXFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' 'CFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' 'CXXFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' --enable-cxx-flags= --target=arm-linux-musleabi --prefix=/devcloud/workspace/source/build/../output/arm-linux-musleabi --with-gmp=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-isl=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpfr=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpc=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-build-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --disable-libssp --enable-__cxa_atexit --enable-symvers=gnu --disable-libitm --enable-lto --enable-shared --disable-libstdcxx-pch --disable-libquadmath --disable-bootstrap --with-pkgversion='musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39' --with-system-zlib --with-build-time-tools=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target/bin --disable-fixed-point --enable-checking=release --with-multilib-list=@t-ml-arm-linux-musleabi --disable-libgomp --enable-libatomic --enable-libsanitizer --enable-tls --disable-nls --disable-libstdcxx-dual-abi --disable-extern-template --with-arch=armv7-a --with-float=softfp --with-mode=thumb
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 10.3.0 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) 
+        COMPILER_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/
+        LIBRARY_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_745a2'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a'
+         /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/collect2 -plugin /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/liblto_plugin.so -plugin-opt=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cctEb8M3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target --eh-frame-hdr -dynamic-linker /lib/ld-musl-arm.so.1 -X -m armelf_linux_eabi -o cmTC_745a2 /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crt1.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crti.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0 -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -liconv -lgcc --push-state --as-needed -lgcc_s --pop-state /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtend.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_745a2'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a'
+        gmake[1]: Leaving directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0]
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi]
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward]
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include]
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/include]
+          add: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/include]
+        end of search list found
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0]
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi]
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0/backward]
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include]
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/include] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/include]
+        collapse include dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/include] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/include]
+        implicit include dirs: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include/c++/10.3.0/backward;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/include;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/include;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/usr/local/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_745a2/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_745a2.dir/build.make CMakeFiles/cmTC_745a2.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/dreame/dmt/data/nvme7/vt_infer/yolo_infer/build/intermediates/CMakeFiles/CMakeScratch/TryCompile-BhLaIL']
+        ignore line: [Building CXX object CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc   -v -o CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Reading specs from /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/specs]
+        ignore line: [COLLECT_GCC=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc]
+        ignore line: [Target: arm-linux-musleabi]
+        ignore line: [Configured with: /devcloud/workspace/source/build/../build_tmp/build_source/gcc/configure LDFLAGS='-z relro -z now -z noexecstack -pie ' CFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' CXXFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' 'CFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' 'CXXFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' --enable-cxx-flags= --target=arm-linux-musleabi --prefix=/devcloud/workspace/source/build/../output/arm-linux-musleabi --with-gmp=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-isl=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpfr=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpc=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-build-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --disable-libssp --enable-__cxa_atexit --enable-symvers=gnu --disable-libitm --enable-lto --enable-shared --disable-libstdcxx-pch --disable-libquadmath --disable-bootstrap --with-pkgversion='musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39' --with-system-zlib --with-build-time-tools=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target/bin --disable-fixed-point --enable-checking=release --with-multilib-list=@t-ml-arm-linux-musleabi --disable-libgomp --enable-libatomic --enable-libsanitizer --enable-tls --disable-nls --disable-libstdcxx-dual-abi --disable-extern-template --with-arch=armv7-a --with-float=softfp --with-mode=thumb]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.3.0 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a']
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/cc1plus -quiet -v -iprefix /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/ -isysroot /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target -D_GNU_SOURCE /usr/local/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mfloat-abi=softfp -mthumb -mtls-dialect=gnu -march=armv7-a -auxbase-strip CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccQK0VMr.s]
+        ignore line: [GNU C++14 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) version 10.3.0 (arm-linux-musleabi)]
+        ignore line: [	compiled by GNU C version 7.3.0  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version UNKNOWN-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0"]
+        ignore line: [ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi"]
+        ignore line: [ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward"]
+        ignore line: [ignoring nonexistent directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/local/include"]
+        ignore line: [ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include"]
+        ignore line: [ignoring duplicate directory "/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-linux-musleabi/10.3.0/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/arm-linux-musleabi]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include/c++/10.3.0/backward]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/include]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/include]
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) version 10.3.0 (arm-linux-musleabi)]
+        ignore line: [	compiled by GNU C version 7.3.0  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version UNKNOWN-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: c01f74acfb900c6c9ba5ab119da9d77b]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a']
+        ignore line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/as -v -march=armv7-a -mfloat-abi=softfp -meabi=5 -o CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccQK0VMr.s]
+        ignore line: [GNU assembler version 2.38 (arm-linux-musleabi) using BFD version (GNU Binutils) 2.38]
+        ignore line: [COMPILER_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/]
+        ignore line: [LIBRARY_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o' '-c'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a']
+        ignore line: [Linking CXX executable cmTC_745a2]
+        ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_745a2.dir/link.txt --verbose=1]
+        ignore line: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc  -v CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_745a2 ]
+        ignore line: [Reading specs from /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/specs]
+        ignore line: [COLLECT_GCC=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/arm-v01c02-linux-musleabi-gcc]
+        ignore line: [COLLECT_LTO_WRAPPER=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/lto-wrapper]
+        ignore line: [Target: arm-linux-musleabi]
+        ignore line: [Configured with: /devcloud/workspace/source/build/../build_tmp/build_source/gcc/configure LDFLAGS='-z relro -z now -z noexecstack -pie ' CFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' CXXFLAGS='-O2 -Wall -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines -fPIE ' 'CFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' 'CXXFLAGS_FOR_TARGET=-O2  -Wall -fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -Wtrampolines ' --enable-cxx-flags= --target=arm-linux-musleabi --prefix=/devcloud/workspace/source/build/../output/arm-linux-musleabi --with-gmp=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-isl=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpfr=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-mpc=/devcloud/workspace/source/build/../build_tmp/arm-linux-musleabi/host-libs/usr --with-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-build-sysroot=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --disable-libssp --enable-__cxa_atexit --enable-symvers=gnu --disable-libitm --enable-lto --enable-shared --disable-libstdcxx-pch --disable-libquadmath --disable-bootstrap --with-pkgversion='musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39' --with-system-zlib --with-build-time-tools=/devcloud/workspace/source/build/../output/arm-linux-musleabi/target/bin --disable-fixed-point --enable-checking=release --with-multilib-list=@t-ml-arm-linux-musleabi --disable-libgomp --enable-libatomic --enable-libsanitizer --enable-tls --disable-nls --disable-libstdcxx-dual-abi --disable-extern-template --with-arch=armv7-a --with-float=softfp --with-mode=thumb]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 10.3.0 (musl-1.2.3 linux-5.10 V12CS61.005.010  2024-03-18 21:24:39) ]
+        ignore line: [COMPILER_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/bin/]
+        ignore line: [LIBRARY_PATH=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib/:/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_745a2'  '-mfloat-abi=softfp' '-mthumb' '-mtls-dialect=gnu' '-march=armv7-a']
+        link line: [ /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/collect2 -plugin /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/liblto_plugin.so -plugin-opt=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cctEb8M3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target --eh-frame-hdr -dynamic-linker /lib/ld-musl-arm.so.1 -X -m armelf_linux_eabi -o cmTC_745a2 /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crt1.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crti.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0 -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib -L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -liconv -lgcc --push-state --as-needed -lgcc_s --pop-state /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtend.o /home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crtn.o]
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../libexec/gcc/arm-linux-musleabi/10.3.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cctEb8M3.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-liconv] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--sysroot=/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib/ld-musl-arm.so.1] ==> ignore
+          arg [-X] ==> ignore
+          arg [-m] ==> ignore
+          arg [armelf_linux_eabi] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_745a2] ==> ignore
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crt1.o] ==> obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crt1.o]
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crti.o] ==> obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crti.o]
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o] ==> obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o]
+          arg [-L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0] ==> dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0]
+          arg [-L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc] ==> dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc]
+          arg [-L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib] ==> dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib]
+          arg [-L/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib] ==> dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib]
+          arg [CMakeFiles/cmTC_745a2.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-liconv] ==> lib [iconv]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtend.o] ==> obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtend.o]
+          arg [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crtn.o] ==> obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crtn.o]
+        collapse obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crt1.o] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crt1.o]
+        collapse obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crti.o] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crti.o]
+        collapse obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o]
+        collapse obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/crtend.o] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/crtend.o]
+        collapse obj [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib/crtn.o] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crtn.o]
+        collapse library dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0]
+        collapse library dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc]
+        collapse library dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../lib/gcc/arm-linux-musleabi/10.3.0/../../../../arm-linux-musleabi/lib] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/lib]
+        collapse library dir [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/bin/../target/usr/lib] ==> [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib]
+        implicit libs: [gcc;gcc_s;c;iconv;gcc;gcc_s]
+        implicit objs: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crt1.o;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crti.o;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/crtbegin.o;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0/crtend.o;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib/crtn.o]
+        implicit dirs: [/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc/arm-linux-musleabi/10.3.0;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/lib/gcc;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/arm-linux-musleabi/lib;/home/dreame/dmt/data/nvme7/package/arm-v01c02-linux-musleabi-gcc/target/usr/lib]
+        implicit fwks: []
+      
+      
+...

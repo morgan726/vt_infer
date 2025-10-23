@@ -1,0 +1,326 @@
+Subject: [PATCH] yolov8 rpn
+
+---
+ rpn_op/dec_bbox.py            | 84 +++++++++++++++++++++++++++++++++++
+ rpn_op/filter.py              | 42 ++++++++++++++++++
+ rpn_op/nms.py                 | 42 ++++++++++++++++++
+ rpn_op/sort.py                | 43 ++++++++++++++++++
+ ultralytics/nn/modules.py     | 30 ++++++++++---
+ ultralytics/yolo/utils/tal.py |  3 +-
+ 6 files changed, 237 insertions(+), 7 deletions(-)
+ create mode 100755 rpn_op/dec_bbox.py
+ create mode 100755 rpn_op/filter.py
+ create mode 100755 rpn_op/nms.py
+ create mode 100755 rpn_op/sort.py
+
+diff --git a/rpn_op/dec_bbox.py b/rpn_op/dec_bbox.py
+new file mode 100755
+index 00000000..90a89c6a
+--- /dev/null
++++ b/rpn_op/dec_bbox.py
+@@ -0,0 +1,84 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++from torch.onnx.symbolic_helper import _maybe_get_const
++import pickle
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor DecBBox(torch::Tensor input0, torch::Tensor bias, int64_t num_anchors,
++            int64_t num_coords, int64_t num_classes, int64_t m_gridH, int64_t m_gridW, int64_t m_imgW, int64_t m_imgH,
++            int64_t useClassId, int64_t calc_mode,int64_t clip_box,int64_t share_loc, int64_t multi_label)
++        {
++            bool isSingleLabel = (calc_mode == 3 || calc_mode == 5 || calc_mode == 8) && multi_label == 0;
++            if (isSingleLabel || calc_mode == 2) {
++                return torch::zeros({1, 1, 5 + useClassId, input0.size(3)});
++            } else {
++                return torch::zeros({1, num_classes, 5 + useClassId, input0.size(3)});
++            }
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::DecBBox", &DecBBox);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='DecBBox',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args('v', 'v', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i','i','i','i', 'i')
++def symbolic_decbbox(g, input, bias, num_anchors, num_coords, num_classes, gridH, gridW, imgW, imgH, useClassId, calc_mode, clip_bbox, share_loc, multi_label):
++    return g.op('custom_ops::DecBBox', input,  bias, num_anchors_i = num_anchors, num_coords_i = num_coords, num_classes_i = num_classes,
++                gridH_i = gridH, gridW_i = gridW, imgW_i = imgW, imgH_i = imgH, useClassId_i = useClassId, calc_mode_i = calc_mode,
++                clip_bbox_i = clip_bbox,share_loc_i = share_loc, multi_label_i = multi_label)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::DecBBox', symbolic_decbbox, 9)
++
++class DecBBox(torch.nn.Module):
++    def __init__(self, y,num_anchors,num_coords,num_classes, gridH, gridW, imgW, imgH, useClassId, calc_mode,clip_bbox,share_loc, multi_label = 0):
++        super(DecBBox, self).__init__()
++        self.register_buffer('y', torch.tensor(y))
++        self.num_anchors = num_anchors
++        self.num_coords = num_coords
++        self.num_classes = num_classes
++        self.gridH = gridH
++        self.gridW = gridW
++        self.imgW = imgW
++        self.imgH = imgH
++        self.useClassId = useClassId
++        self.calc_mode = calc_mode
++        self.clip_bbox = clip_bbox
++        self.share_loc = share_loc
++        self.multi_label = multi_label
++    def forward(self, x):
++        return torch.ops.custom_ops.DecBBox(x,self.y,self.num_anchors, self.num_coords,self.num_classes, self.gridH,self.gridW,
++            self.imgW,self.imgH, self.useClassId, self.calc_mode,self.clip_bbox,self.share_loc, self.multi_label)
++
++# DecBBox2: for ssd & fastercnn with 2 inputs
++class DecBBox2(torch.nn.Module):
++    def __init__(self, num_anchors,num_coords,num_classes, gridH, gridW, imgW, imgH, useClassId, calc_mode,clip_bbox,share_loc):
++        super(DecBBox, self).__init__()
++        self.num_anchors = num_anchors
++        self.num_coords = num_coords
++        self.num_classes = num_classes
++        self.gridH = gridH
++        self.gridW = gridW
++        self.imgW = imgW
++        self.imgH = imgH
++        self.useClassId = useClassId
++        self.calc_mode = calc_mode
++        self.clip_bbox = clip_bbox
++        self.share_loc = share_loc
++        self.multi_label = 0
++    def forward(self, x, y):
++        return torch.ops.custom_ops.DecBBox(x, y, self.num_anchors, self.num_coords,self.num_classes, self.gridH,self.gridW,
++            self.imgW,self.imgH, self.useClassId, self.calc_mode,self.clip_bbox,self.share_loc, self.multi_label)
+\ No newline at end of file
+diff --git a/rpn_op/filter.py b/rpn_op/filter.py
+new file mode 100755
+index 00000000..981da4b9
+--- /dev/null
++++ b/rpn_op/filter.py
+@@ -0,0 +1,42 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor Filter(torch::Tensor in, int64_t topK, double m_lowScoreThresh)
++        {
++            return in;
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::Filter", &Filter);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='Filter',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args("v", "i", "f")
++def symbolic_filter(g, self, topK, conf_thres):
++    return g.op('custom_ops::Filter', self, topK_i=topK, low_score_thresh_f=conf_thres)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::Filter', symbolic_filter, 9)
++
++class Filter(torch.nn.Module):
++    def __init__(self, topK, conf_thres):
++        super(Filter, self).__init__()
++        self.topK = topK
++        self.conf_thres = conf_thres
++
++    def forward(self, x):
++        return torch.ops.custom_ops.Filter(x, self.topK, self.conf_thres)
+\ No newline at end of file
+diff --git a/rpn_op/nms.py b/rpn_op/nms.py
+new file mode 100755
+index 00000000..385fb383
+--- /dev/null
++++ b/rpn_op/nms.py
+@@ -0,0 +1,42 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor NMS(torch::Tensor in, int64_t topK, double nmsThresh)
++        {
++            return in;
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::NMS", &NMS);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='NMS',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args("v", "i", "f")
++def symbolic_nms(g, self, topK, nmsThresh):
++    return g.op('custom_ops::NMS', self, topK_i=topK, nms_thresh_f = nmsThresh)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::NMS', symbolic_nms, 9)
++
++class NMS(torch.nn.Module):
++    def __init__(self, topK,nms_thresh):
++        super(NMS, self).__init__()
++        self.topK = topK
++        self.nms_thresh = nms_thresh
++
++    def forward(self, x):
++        return torch.ops.custom_ops.NMS(x, self.topK, self.nms_thresh)
+\ No newline at end of file
+diff --git a/rpn_op/sort.py b/rpn_op/sort.py
+new file mode 100755
+index 00000000..64921e57
+--- /dev/null
++++ b/rpn_op/sort.py
+@@ -0,0 +1,43 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor Sort(torch::Tensor in, int64_t topK, int64_t isMultiSort, int64_t classNum)
++        {
++            return in;
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::Sort", &Sort);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='Sort',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args("v", "i", "i","i")
++def symbolic_sort(g, self, topK, multi_sort, class_num):
++    return g.op('custom_ops::Sort', self, topK_i=topK, multi_sort_i=multi_sort,class_num_i = class_num)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::Sort', symbolic_sort, 9)
++
++class Sort(torch.nn.Module):
++    def __init__(self, topK, multi_sort, class_num):
++        super(Sort, self).__init__()
++        self.topK = topK
++        self.multi_sort = multi_sort
++        self.class_num = class_num
++
++    def forward(self, x):
++        return torch.ops.custom_ops.Sort(x, self.topK, self.multi_sort, self.class_num)
+diff --git a/ultralytics/nn/modules.py b/ultralytics/nn/modules.py
+index ee21d79f..57dd79bb 100644
+--- a/ultralytics/nn/modules.py
++++ b/ultralytics/nn/modules.py
+@@ -78,9 +78,12 @@ class DFL(nn.Module):
+ 
+     def forward(self, x):
+         b, c, a = x.shape  # batch, channels, anchors
+-        return self.conv(x.view(b, 4, self.c1, a).transpose(2, 1).softmax(1)).view(b, 4, a)
+-        # return self.conv(x.view(b, self.c1, 4, a).softmax(1)).view(b, 4, a)
++        b = 1
++        c1 = 16
++        a = 8400
+ 
++        return self.conv(x.view(b, 4, c1, a).transpose(2, 1).softmax(1)).view(b, 4, a)
++        # return self.conv(x.view(b, self.c1, 4, a).softmax(1)).view(b, 4, a)
+ 
+ class TransformerLayer(nn.Module):
+     # Transformer layer https://arxiv.org/abs/2010.11929 (LayerNorm layers removed for better performance)
+@@ -379,7 +382,10 @@ class Ensemble(nn.ModuleList):
+ 
+ 
+ # Model heads below ----------------------------------------------------------------------------------------------------
+-
++from rpn_op.filter import Filter
++from rpn_op.sort import Sort
++from rpn_op.nms import NMS
++from rpn_op.dec_bbox import DecBBox
+ 
+ class Detect(nn.Module):
+     # YOLOv8 Detect head for detection models
+@@ -418,9 +424,21 @@ class Detect(nn.Module):
+             cls = x_cat[:, self.reg_max * 4:]
+         else:
+             box, cls = x_cat.split((self.reg_max * 4, self.nc), 1)
+-        dbox = dist2bbox(self.dfl(box), self.anchors.unsqueeze(0), xywh=True, dim=1) * self.strides
+-        y = torch.cat((dbox, cls.sigmoid()), 1)
+-        return y if self.export else (y, x)
++        dbox = dist2bbox(self.dfl(box), self.anchors.unsqueeze(0), xywh=False, dim=1) * self.strides
++
++        #add bbox
++        tmp = torch.cat((dbox, cls), 1).view(1, 1, 4 + self.nc, -1)
++        self.bbox = DecBBox(y = [0.0], num_anchors=400,num_coords=4,num_classes=self.nc,gridW=20,gridH=20,imgW=640,imgH=640,useClassId=1,calc_mode=8,clip_bbox=1,share_loc =1)
++        tmp =  self.bbox(tmp)
++
++        #add filter
++        self.filter = Filter(300, 0.9)
++        self.sort = Sort(300,0,1)
++        self.nms = NMS(300,0.5)
++        y = self.filter(tmp)
++        y = self.sort(y)
++        y = self.nms(y)
++        return y
+ 
+     def bias_init(self):
+         # Initialize Detect() biases, WARNING: requires stride availability
+diff --git a/ultralytics/yolo/utils/tal.py b/ultralytics/yolo/utils/tal.py
+index 0b714144..c96c8bfb 100644
+--- a/ultralytics/yolo/utils/tal.py
++++ b/ultralytics/yolo/utils/tal.py
+@@ -206,7 +206,8 @@ def make_anchors(feats, strides, grid_cell_offset=0.5):
+ 
+ def dist2bbox(distance, anchor_points, xywh=True, dim=-1):
+     """Transform distance(ltrb) to box(xywh or xyxy)."""
+-    lt, rb = distance.chunk(2, dim)
++    #lt, rb = distance.chunk(2, dim)
++    lt, rb = torch.split(distance,2, 1)
+     x1y1 = anchor_points - lt
+     x2y2 = anchor_points + rb
+     if xywh:
+-- 
+2.17.1
+

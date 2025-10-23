@@ -1,0 +1,14 @@
+
+path: /media/dreame/新加卷/economy/dataset/work/kitchen_20251014  # 数据集根目录（绝对路径）
+train: train.txt  
+val: val.txt      
+test:  # 测试集（可选，留空）
+
+# 类别信息
+names:
+  - fire
+  - fog
+  - cover
+  - pan
+  - food
+nc: 5  # 总类别数

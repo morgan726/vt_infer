@@ -1,0 +1,166 @@
+Subject: [PATCH] yolov5 rpn
+
+---
+ models/yolo.py   | 35 +++++++++++++++++++++++++++++++----
+ rpn_op/filter.py | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ rpn_op/sort.py   | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 117 insertions(+), 4 deletions(-)
+ create mode 100644 rpn_op/filter.py
+ create mode 100644 rpn_op/sort.py
+
+diff --git a/models/yolo.py b/models/yolo.py
+index ed21c06..6c00dd9 100644
+--- a/models/yolo.py
++++ b/models/yolo.py
+@@ -55,6 +55,8 @@ class Detect(nn.Module):
+ 
+     def forward(self, x):
+         z = []  # inference output
++        coords = []
++        class_ids = []
+         for i in range(self.nl):
+             x[i] = self.m[i](x[i])  # conv
+             bs, _, ny, nx = x[i].shape  # x(bs,255,20,20) to x(bs,3,20,20,85)
+@@ -73,10 +75,35 @@ class Detect(nn.Module):
+                     xy, wh, conf = x[i].sigmoid().split((2, 2, self.nc + 1), 4)
+                     xy = (xy * 2 + self.grid[i]) * self.stride[i]  # xy
+                     wh = (wh * 2) ** 2 * self.anchor_grid[i]  # wh
+-                    y = torch.cat((xy, wh, conf), 4)
+-                z.append(y.view(bs, self.na * nx * ny, self.no))
+-
+-        return x if self.training else (torch.cat(z, 1),) if self.export else (torch.cat(z, 1), x)
++                    xmin = xy[:,:,:,:,0:1] - wh[:,:,:,:,0:1] / 2
++                    xmax = xy[:,:,:,:,0:1] + wh[:,:,:,:,0:1] / 2
++                    ymin = xy[:,:,:,:,1:2] - wh[:,:,:,:,1:2] / 2
++                    ymax = xy[:,:,:,:,1:2] + wh[:,:,:,:,1:2] / 2
++
++                    coord = torch.cat((xmin, ymin, xmax, ymax), 4)
++                    coord = coord.view(1, 1, self.na * nx * ny, -1)
++                    coord = coord.transpose(3, 2)
++
++                    conf = conf.view(1, 1, self.na * nx * ny, -1)
++                    obj_score = conf[:,:,:,0:1].transpose(3, 2)
++                    class_score = conf[:,:,:,1:].transpose(3, 2)
++                    max_score, max_class_id = class_score.max(2, keepdim = True)
++                    max_score = max_score * obj_score
++                z.append(max_score)
++                coords.append(coord)
++                class_ids.append(max_class_id)
++
++        from rpn_op.filter import FilterVector
++        from rpn_op.sort import SortVector
++        self.filter_val = FilterVector(300, 0.8, 0, 1)
++        self.filter_idx = FilterVector(300, 0.8, 1, 0)
++        z = torch.cat(z, 3)
++        z_copy = z.clone()
++        coords = torch.cat(coords, 3)
++        class_ids = torch.cat(class_ids, 3)
++        filter_result0 = self.filter_val(z)
++        filter_result1 = self.filter_idx(z_copy)
++        return x if self.training else (filter_result0, filter_result1, coords, class_ids) if self.export else (torch.cat(z, 1), x)
+ 
+     def _make_grid(self, nx=20, ny=20, i=0, torch_1_10=check_version(torch.__version__, '1.10.0')):
+         d = self.anchors[i].device
+diff --git a/rpn_op/filter.py b/rpn_op/filter.py
+new file mode 100644
+index 0000000..72e18b8
+--- /dev/null
++++ b/rpn_op/filter.py
+@@ -0,0 +1,44 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor FilterVector(torch::Tensor in, int64_t topK, double filterThresh, int64_t isOutputIdx, int64_t isReportVectorNum)
++        {
++            return in;
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::FilterVector", &FilterVector);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='FilterVector',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args("v", "i", "f", "i", "i")
++def symbolic_filter(g, self, top_k, filter_thresh, is_output_idx, is_report_vector_num):
++    return g.op('custom_ops::FilterVector', self, top_k_i=top_k, filter_thresh_f=filter_thresh,
++        is_output_idx_i=is_output_idx, is_report_vector_num_i=is_report_vector_num)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::FilterVector', symbolic_filter, 9)
++
++class FilterVector(torch.nn.Module):
++    def __init__(self, top_k, filter_thresh, is_output_idx, is_report_vector_num):
++        super(FilterVector, self).__init__()
++        self.top_k = top_k
++        self.filter_thresh = filter_thresh
++        self.is_output_idx = is_output_idx
++        self.is_report_vector_num = is_report_vector_num
++    def forward(self, x):
++        return torch.ops.custom_ops.FilterVector(x, self.top_k, self.filter_thresh, self.is_output_idx, self.is_report_vector_num)
+\ No newline at end of file
+diff --git a/rpn_op/sort.py b/rpn_op/sort.py
+new file mode 100644
+index 0000000..a08d57b
+--- /dev/null
++++ b/rpn_op/sort.py
+@@ -0,0 +1,42 @@
++import unittest
++import torch
++import torch.utils.cpp_extension
++
++import onnx
++
++import numpy as np
++import io
++from torch.onnx.symbolic_helper import parse_args
++from torch.onnx import register_custom_op_symbolic
++
++op_source = """
++        #include <torch/script.h>
++        torch::Tensor SortVector(torch::Tensor in, int64_t topK, int64_t isOutputIdx, int64_t isReportVectorNum)
++        {
++            return in;
++        }
++        static auto registry =
++            torch::RegisterOperators("custom_ops::SortVector", &SortVector);
++        """
++
++torch.utils.cpp_extension.load_inline(
++    name='SortVector',
++    cpp_sources=op_source,
++    is_python_module=False,
++    verbose=True,
++    )
++
++@parse_args("v", "i", "i", "i")
++def symbolic_filter(g, self, top_k, is_output_idx, is_report_vector_num):
++    return g.op('custom_ops::SortVector', self, top_k_i=top_k, is_output_idx_i=is_output_idx, is_report_vector_num_i=is_report_vector_num)
++from torch.onnx import register_custom_op_symbolic
++register_custom_op_symbolic('custom_ops::SortVector', symbolic_filter, 9)
++
++class SortVector(torch.nn.Module):
++    def __init__(self, top_k, is_output_idx, is_report_vector_num):
++        super(FilterVector, self).__init__()
++        self.top_k = top_k
++        self.is_output_idx = is_output_idx
++        self.is_report_vector_num = is_report_vector_num
++    def forward(self, x):
++        return torch.ops.custom_ops.SortVector(x, self.top_k, self.is_output_idx, self.is_report_vector_num)
+\ No newline at end of file
+-- 
+2.17.1
+
