@@ -1,27 +1,6 @@
 version: 65536
 layer {
-  name: "Concat_285"
-  calc_data_type: F16
-  quant_param {
-    input {
-      data_type: F16
-      scale: 1
-      offset: 0
-    }
-    input {
-      data_type: F16
-      scale: 1
-      offset: 0
-    }
-    output {
-      data_type: F16
-      scale: 1
-      offset: 0
-    }
-  }
-}
-layer {
-  name: "Concat_284"
+  name: "/model.22/Concat_5"
   calc_data_type: F16
   quant_param {
     input {

@@ -867,38 +867,70 @@ void ModelProcess::FilterYolov8Box(int32_t modelId, vector<vector<float>>& vaild
 {
     svp_acl_mdl_io_dims outDims;
     svp_acl_error ret = svp_acl_mdl_get_output_dims(modelDesc_, OUTPUT_NUM_ID, &outDims);
-    if (ret != SVP_ACL_SUCCESS || outDims.dim_count <= 2) { // 2: dim count
-        ERROR_LOG("svp_acl_mdl_get_output_dims error!");
+    if (ret != SVP_ACL_SUCCESS || outDims.dim_count != 3) { // 明确要求3维：[1, C, 8400]
+        ERROR_LOG("svp_acl_mdl_get_output_dims error! dim_count=%d", outDims.dim_count);
+        return;
     }
 
-    int outWidth = outDims.dims[outDims.dim_count - 1];
-    auto stride = svp_acl_mdl_get_output_default_stride(modelDesc_, 0) / sizeof(float);
-    svp_acl_data_buffer* dataBuffer = svp_acl_mdl_get_dataset_buffer(output_, 0);
-    auto xCenter = reinterpret_cast<float*>(svp_acl_get_data_buffer_addr(dataBuffer));
-    auto yCenter = xCenter + stride;
-    auto boxWidth = yCenter + stride;
-    auto boxHeight = boxWidth + stride;
-    auto classScore = boxHeight + stride;
+    // 从维度中提取关键参数
+    int batchSize = outDims.dims[0];       // dim[0] = 1（批次大小）
+    int totalChannels = outDims.dims[1];   // dim[1] = 9（总通道数）
+    int outWidth = outDims.dims[2];        // dim[2] = 8400（预测框数量）
+    int stride = svp_acl_mdl_get_output_default_stride(modelDesc_, 0) / sizeof(float); // 8400
 
+    // 动态计算类别数量：总通道数 - 4（4坐标）
+    int classNum = totalChannels - 4;
+    if (classNum <= 0) {
+        ERROR_LOG("Invalid totalChannels=%d, classNum=%d", totalChannels, classNum);
+        return;
+    }
+
+    // 获取输出数据基地址
+    svp_acl_data_buffer* dataBuffer = svp_acl_mdl_get_dataset_buffer(output_, 0);
+    float* outputBase = reinterpret_cast<float*>(svp_acl_get_data_buffer_addr(dataBuffer));
+    if (outputBase == nullptr) {
+        ERROR_LOG("Failed to get output buffer address!");
+        return;
+    }
+
+    // 按通道索引映射（基于dim[1]动态计算）
+    float* xCenter = outputBase + 0 * stride;   // 第0通道：x中心
+    float* yCenter = outputBase + 1 * stride;   // 第1通道：y中心
+    float* boxWidth = outputBase + 2 * stride;  // 第2通道：宽
+    float* boxHeight = outputBase + 3 * stride; // 第3通道：高
+    float* classScoresBase = outputBase + 4 * stride; // 第5~totalChannels-1通道：类别分数
+
+    INFO_LOG("stride:%d; outWidth:%d; totalChannels:%d; classNum:%d", 
+             stride, outWidth, totalChannels, classNum);
+
+    // 遍历每个预测框（共8400个）
     for (int j = 0; j < outWidth; j++) {
-        float maxSore = 0.f;
+        // 1. 遍历所有类别，找最大分数和对应的ID
+        float maxClassScore = 0.f;
         uint8_t maxClassId = 0;
-        auto tmpClassScore = classScore;
-        for (uint8_t classId = 0; classId < CLASS_NUM; classId++) {
-            if (*tmpClassScore > maxSore) {
-                maxClassId = classId;
-                maxSore = *tmpClassScore;
+        for (int c = 0; c < classNum; c++) {
+            // 类别分数地址：基地址 + 类别索引×stride + 当前框索引j
+            float currentScore = *(classScoresBase + c * stride + j);
+            if (currentScore > maxClassScore) {
+                maxClassScore = currentScore;
+                maxClassId = c;
             }
-            tmpClassScore += stride;
         }
-        if (maxSore > scoreThr_) {
-            vaildBox.push_back({maxSore, xCenter[j], yCenter[j], boxWidth[j],
-                boxHeight[j], static_cast<float>(maxClassId)});
+
+        // 2. 筛选高分数框（可根据需要结合置信度objScore[j]）
+        if (maxClassScore > scoreThr_) {
+            INFO_LOG("classId:%d; score:%f", maxClassId, maxClassScore);
+            vaildBox.push_back({
+                maxClassScore,                  // 最终分数（可改为 objScore[j] * maxClassScore）
+                xCenter[j],                     // x中心
+                yCenter[j],                     // y中心
+                boxWidth[j],                    // 宽
+                boxHeight[j],                   // 高
+                static_cast<float>(maxClassId)  // 类别ID
+            });
         }
-        classScore++;
     }
 }
-
 void ModelProcess::OutputModelResultYoloV8Cpu(int32_t modelId, const string& imgName) const
 {
     svp_acl_mdl_io_dims inDims;

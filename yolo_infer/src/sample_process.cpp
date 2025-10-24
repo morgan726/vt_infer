@@ -32,16 +32,16 @@ static const map<Yolo, string> g_modelPath = {
 
 static const map<Yolo, string> g_imgPath = {
     { Yolo::YOLOV3, "dog_bike_car_yolov3.bin" },
-    { Yolo::YOLOV5, "image_yolov5.bin" },
+    { Yolo::YOLOV5, "dog_bike_car_yolov5.bin" },
     { Yolo::YOLOV7, "dog_bike_car_yolov7.bin" },
     { Yolo::YOLOV8, "dog_bike_car_yolov8.bin" },
     { Yolo::YOLOX,  "dog_bike_car_yolox.bin" },
-    { Yolo::YOLOV5_CPU, "image_yolov5.bin" },
+    { Yolo::YOLOV5_CPU, "dog_bike_car_yolov5.bin" },
     { Yolo::YOLOV8_CPU, "dog_bike_car_yolov8.bin" },
     { Yolo::YOLOV3_NEW_RPN, "dog_bike_car_yolov3.bin" },
     { Yolo::YOLOV5_NEW_RPN, "dog_bike_car_yolov5.bin" },
     { Yolo::YOLOV7_NEW_RPN, "dog_bike_car_yolov7.bin" },
-    { Yolo::YOLOV8_NEW_RPN, "image_yolov8.bin" },
+    { Yolo::YOLOV8_NEW_RPN, "dog_bike_car_yolov5.bin" },
     { Yolo::YOLOV9_NEW_RPN, "dog_bike_car_yolov9.bin" },
 };
 
@@ -49,14 +49,14 @@ static const map<Yolo, string> g_imageFile = {
     { Yolo::YOLOV3, "dog_bike_car.jpg" },
     { Yolo::YOLOV5, "dog_bike_car.jpg" },
     { Yolo::YOLOV7, "dog_bike_car.jpg" },
-    { Yolo::YOLOV8, "image.png" },
+    { Yolo::YOLOV8, "dog_bike_car.jpg" },
     { Yolo::YOLOX,  "dog_bike_car.jpg" },
-    { Yolo::YOLOV5_CPU, "image.png" },
+    { Yolo::YOLOV5_CPU, "dog_bike_car.jpg" },
     { Yolo::YOLOV8_CPU, "dog_bike_car.jpg" },
     { Yolo::YOLOV3_NEW_RPN, "dog_bike_car.jpg" },
     { Yolo::YOLOV5_NEW_RPN, "dog_bike_car.jpg" },
     { Yolo::YOLOV7_NEW_RPN, "dog_bike_car.jpg" },
-    { Yolo::YOLOV8_NEW_RPN, "image.png" },
+    { Yolo::YOLOV8_NEW_RPN, "dog_bike_car.jpg" },
     { Yolo::YOLOV9_NEW_RPN, "dog_bike_car.jpg" },
 };
 
@@ -164,11 +164,6 @@ Result SampleProcess::Process()
         if (!isCpuProcess_) {
             ret = modelProcess.SetDetParas(modelId);
             CHECK_EXPS_RETURN(ret != SUCCESS, FAILED, "SetDetParas failed");
-        }
-
-        if (modelId == static_cast<int>(Yolo::YOLOV3_NEW_RPN)) {
-            ret = modelProcess.SetYolov3BboxParas();
-            CHECK_EXPS_RETURN(ret != SUCCESS, FAILED, "SetAYolov3BboxParas failed");
         }
 
         ret = modelProcess.CreateTaskBufAndWorkBuf();

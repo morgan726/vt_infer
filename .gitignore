@@ -4,3 +4,5 @@
 
 *log
 yolo_infer/build
+yolo_infer/out
+*om
