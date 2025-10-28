@@ -14,7 +14,31 @@
 #include "utils.h"
 
 using namespace std;
+Result GetAllImageFiles(const std::string& imgDir, vector<string>& imgFiles) {
+    DIR* dir = opendir(imgDir.c_str());
+    if (!dir) {
+        ERROR_LOG("Open directory failed: %s", imgDir.c_str());
+        return FAILED;
+    }
 
+    struct dirent* entry;
+    while ((entry = readdir(dir)) != nullptr) {
+        string fileName = entry->d_name;
+        string fileExt = fileName.substr(fileName.find_last_of('.') + 1);
+        // 筛选图像格式
+        if (fileExt == "jpg" || fileExt == "png" || fileExt == "jpeg" || fileExt == "JPG" || fileExt == "PNG") {
+            imgFiles.push_back(imgDir + "/" + fileName);
+        }
+    }
+    closedir(dir);
+
+    if (imgFiles.empty()) {
+        ERROR_LOG("No image files found in: %s", imgDir.c_str());
+        return FAILED;
+    }
+    INFO_LOG("Found %d image files in: %s", imgFiles.size(), imgDir.c_str());
+    return SUCCESS;
+}
 static const map<Yolo, string> g_modelPath = {
     { Yolo::YOLOV3, "yolov3_original.om" },
     { Yolo::YOLOV5, "yolov5_original.om" },

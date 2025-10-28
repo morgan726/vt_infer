@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import cv2
 
 # 模型路径（替换为你的best.pt）
-model = YOLO("../yolo/runs/exp2/weights/best.pt")
+model = YOLO("../yolo/runs/exp2/weights/best.onnx")
 # 测试图像路径（替换为你的图像）
 img_path = "../img/image.png"
 
